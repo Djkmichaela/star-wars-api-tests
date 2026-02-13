@@ -1,6 +1,6 @@
 const Person = require('./Person');
 const { z } = require('zod');
-
+const dataset = JSON.parse(JSON.stringify(require('../Utils/TestData.json')));
 // Zod schema for runtime validation
 const PersonSchema = z.object({
   name: z.string(),
@@ -24,7 +24,7 @@ const PersonSchema = z.object({
 class PersonAPIHelper {
   constructor(request) {
     this.request = request;
-    this.baseUrl = 'https://swapi.dev/api';
+    this.baseUrl = dataset.baseUrl;
   }
 
   // Get person by ID
